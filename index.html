@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="full">
+	<head>
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
+		<script src="assets/jQuery/jquery-3.3.1.min.js"></script>
+
+		<!-- check session -->
+		<script>
+			$.ajax({
+	            type: "POST",
+	            url: "phpscript/checkSession.php",
+	            success: function(res){
+	                if(res == "1") {
+	                    window.location.href = "home.html"; 
+	                }
+	            },
+	            error: function(res) {
+	            	console.log(res);
+	            }
+		    });
+		</script>
+		<script src="assets/js/bootstrap.min.js"></script>
+	  	<link rel="stylesheet" href="assets/css/custom.css"/>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	    <title>UPS Dashboard Login</title>
+	</head>
+	<body>
+		<br>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+					<div class="panel panel-default">
+						<div class="panel-heading" align="center">Login Form</div>
+						<div class="panel-body">
+							<form action="phpscript/loginScript.php" method="post">
+								<div class="error-message"><?php if(isset($message)) { echo $message; } ?></div>
+								<table align="center">
+					            	<tr>
+					            		<td height="50" width="100">
+								            <label for='username'>Username</label>
+					            		</td>
+					            		<td height="50">
+					           				<input type='text' name='username' required="required"><br />
+					            		</td>
+					            	</tr>
+					            	<tr>
+					            		<td height="50" width="100">
+								            <label for='password'>Password</label>
+					            		</td>
+					            		<td height="50">
+								            <input type='password' name='password' required="required" /><br />                            
+					            		</td>
+					            	</tr>
+				            	</table>
+					            	<tr><td colspan="2"><input type="submit" name="loginSubmit" value="Login" class="btn btn-default pull-right"></td></tr>
+				            </form>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+		</div>
+	</body>
+</html>
